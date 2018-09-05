@@ -1,16 +1,23 @@
 
 <?php 
+ 
 session_start(); 
 
-/* Links and defines the database you are using */
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'todo');
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+//link to the DB
+include('mysql.php'); 
+
+if($_SESSION['auth'] != 'true'){
+    header('location:index.php'); 
+}
+
+
+
 ?>
 
 <html>
+
+<nav><a href="logout.php">Logout</a></nav>
+
 <h1>Todo List - <?php echo $_SESSION['userName'] ?> </h1> 
 
 Add a Task
